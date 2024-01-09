@@ -1,0 +1,14 @@
+C:\Users\alexi\Source\Repos\indie-devs\Sudoku\Sudoku\bin\Debug\net6.0\SudokuGame.exe
+C:\Users\alexi\Source\Repos\indie-devs\Sudoku\Sudoku\bin\Debug\net6.0\SudokuGame.deps.json
+C:\Users\alexi\Source\Repos\indie-devs\Sudoku\Sudoku\bin\Debug\net6.0\SudokuGame.runtimeconfig.json
+C:\Users\alexi\Source\Repos\indie-devs\Sudoku\Sudoku\bin\Debug\net6.0\SudokuGame.dll
+C:\Users\alexi\Source\Repos\indie-devs\Sudoku\Sudoku\bin\Debug\net6.0\SudokuGame.pdb
+C:\Users\alexi\Source\Repos\indie-devs\Sudoku\Sudoku\obj\Debug\net6.0\SudokuGame.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\alexi\Source\Repos\indie-devs\Sudoku\Sudoku\obj\Debug\net6.0\SudokuGame.AssemblyInfoInputs.cache
+C:\Users\alexi\Source\Repos\indie-devs\Sudoku\Sudoku\obj\Debug\net6.0\SudokuGame.AssemblyInfo.cs
+C:\Users\alexi\Source\Repos\indie-devs\Sudoku\Sudoku\obj\Debug\net6.0\SudokuGame.csproj.CoreCompileInputs.cache
+C:\Users\alexi\Source\Repos\indie-devs\Sudoku\Sudoku\obj\Debug\net6.0\SudokuGame.dll
+C:\Users\alexi\Source\Repos\indie-devs\Sudoku\Sudoku\obj\Debug\net6.0\refint\SudokuGame.dll
+C:\Users\alexi\Source\Repos\indie-devs\Sudoku\Sudoku\obj\Debug\net6.0\SudokuGame.pdb
+C:\Users\alexi\Source\Repos\indie-devs\Sudoku\Sudoku\obj\Debug\net6.0\SudokuGame.genruntimeconfig.cache
+C:\Users\alexi\Source\Repos\indie-devs\Sudoku\Sudoku\obj\Debug\net6.0\ref\SudokuGame.dll
