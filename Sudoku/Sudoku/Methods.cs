@@ -8,6 +8,17 @@ namespace SudokuGame
 {
     internal class Methods
     {
+
+        static void Main()
+        {
+            int[,] board = GenerateSudoku();
+            bool[,] userEntered = new bool[9, 9];
+            PlaySudoku(board, userEntered);
+
+            // Wait for a key press before closing the console window
+            Console.ReadLine();
+        }
+        
         static bool GenerateSudokuHelper(int[,] board)
         {
             //test rep
