@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +9,9 @@ namespace SudokuGame
     internal class Methods
     {
 
+        static int currentRow = 0;
+        static int currentCol = 0;
+
         static void Main()
         {
             int[,] board = GenerateSudoku();
@@ -18,7 +21,7 @@ namespace SudokuGame
             // Wait for a key press before closing the console window
             Console.ReadLine();
         }
-        
+
         static bool GenerateSudokuHelper(int[,] board)
         {
             //test rep
@@ -79,12 +82,11 @@ namespace SudokuGame
         // Main logic for playing Sudoku
         protected static void PlaySudoku(int[,] board, bool[,] userEntered)
         {
-            Console.WriteLine("Wtite a type of dificulty you want(Easy, Medium or Hard).");
-            String commnad = Console.ReadLine().ToLower();
+            Console.WriteLine("Write a type of difficulty you want (Easy, Medium, or Hard).");
+            string command = Console.ReadLine().ToLower();
 
-            switch (commnad)
+            switch (command)
             {
-
                 case "easy":
                     RemoveNumbers(board, 24);
                     break;
@@ -96,60 +98,84 @@ namespace SudokuGame
                     break;
             }
 
+            // ... (your existing code)
+
             do
             {
                 Console.Clear();
                 PrintBoard(board, userEntered);
 
-                Console.Write("Enter row (1-9): ");
-                if (!int.TryParse(Console.ReadLine(), out int row) || row < 1 || row > 9)
-                {
-                    Console.WriteLine("Invalid row! Try again.");
-                    Console.ReadLine();
-                    continue;
-                }
+                ConsoleKeyInfo keyInfo = Console.ReadKey();
 
-                Console.Write("Enter column (1-9): ");
-                if (!int.TryParse(Console.ReadLine(), out int col) || col < 1 || col > 9)
+                switch (keyInfo.Key)
                 {
-                    Console.WriteLine("Invalid column! Try again.");
-                    Console.ReadLine();
-                    continue;
-                }
-
-                // Check and validate the move
-                if (board[row - 1, col - 1] == 0)
-                {
-                    Console.Write("Enter number (1-9): ");
-                    if (!int.TryParse(Console.ReadLine(), out int num) || num < 1 || num > 9)
-                    {
-                        Console.WriteLine("Invalid number! Try again.");
-                        Console.ReadLine();
-                        continue;
-                    }
-
-                    if (!userEntered[row - 1, col - 1] && IsValidMove(board, row - 1, col - 1, num))
-                    {
-                        board[row - 1, col - 1] = num;
-                        userEntered[row - 1, col - 1] = true; // Mark the number as user-entered
-                    }
-                    else
-                    {
-                        Console.WriteLine("Invalid move! Try again.");
-                        Console.ReadLine(); // Pause to display the message
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("This cell cannot be changed. Try again.");
-                    Console.ReadLine();
+                    case ConsoleKey.UpArrow:
+                        MoveCursor(-1, 0);
+                        break;
+                    case ConsoleKey.DownArrow:
+                        MoveCursor(1, 0);
+                        break;
+                    case ConsoleKey.LeftArrow:
+                        MoveCursor(0, -1);
+                        break;
+                    case ConsoleKey.RightArrow:
+                        MoveCursor(0, 1);
+                        break;
+                    case ConsoleKey.Enter:
+                        // Check if the current cell is empty before allowing user input
+                        if (board[currentRow, currentCol] == 0)
+                        {
+                            Console.Write("Enter number (1-9): ");
+                            if (int.TryParse(Console.ReadLine(), out int num) && num >= 1 && num <= 9)
+                            {
+                                if (!userEntered[currentRow, currentCol] && IsValidMove(board, currentRow, currentCol, num))
+                                {
+                                    board[currentRow, currentCol] = num;
+                                    userEntered[currentRow, currentCol] = true; // Mark the number as user-entered
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Invalid move! Try again.");
+                                    Console.ReadLine(); // Pause to display the message
+                                }
+                            }
+                            else
+                            {
+                                Console.WriteLine("Invalid number! Try again.");
+                                Console.ReadLine(); // Pause to display the message
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("This cell already has a number. Try again.");
+                            Console.ReadLine(); // Pause to display the message
+                        }
+                        break;
+                    default:
+                        break;
                 }
 
             } while (!IsSudokuSolved(board));
 
+            // ... (your existing code)
+
+
             Console.Clear();
             PrintBoard(board, userEntered);
             Console.WriteLine("Congratulations! Sudoku solved!");
+        }
+
+        static void MoveCursor(int rowDelta, int colDelta)
+        {
+            int newRow = currentRow + rowDelta;
+            int newCol = currentCol + colDelta;
+
+            // Check if the new position is within bounds
+            if (newRow >= 0 && newRow < 9 && newCol >= 0 && newCol < 9)
+            {
+                currentRow = newRow;
+                currentCol = newCol;
+            }
         }
 
         // Check the validity of a move
@@ -219,6 +245,11 @@ namespace SudokuGame
             {
                 for (int j = 0; j < 9; j++)
                 {
+                    if (i == currentRow && j == currentCol)
+                    {
+                        Console.BackgroundColor = ConsoleColor.Green; // Highlight the current position
+                    }
+
                     if (board[i, j] == 0)
                     {
                         Console.Write("  ");
@@ -231,6 +262,7 @@ namespace SudokuGame
                     }
 
                     Console.ForegroundColor = def;
+                    Console.BackgroundColor = ConsoleColor.Black; // Reset background color
 
                     if (j == 2 || j == 5) Console.Write("| ");
                 }
@@ -312,4 +344,3 @@ namespace SudokuGame
         }
     }
 }
-
