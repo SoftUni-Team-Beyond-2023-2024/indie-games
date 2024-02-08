@@ -1,23 +1,54 @@
 // Global variable for selected cell
 let selectedCell = null;
+let board = [];
+
+let selRow, selCol;
 
 // Function to handle cell selection
 // Function to handle cell selection
 function selectCell(row, col) {
+    if (board[row][col] != 0) return;
+
     if (selectedCell) {
         selectedCell.classList.remove("selected-cell");
         selectedCell.removeAttribute("contenteditable"); // Remove contenteditable attribute
     }
+
+    selRow = row;
+    selCol = col;
+
     selectedCell = document.getElementById(`cell-${row}-${col}`);
     selectedCell.classList.add("selected-cell");
     selectedCell.setAttribute("contenteditable", true); // Add contenteditable attribute to allow typing
     selectedCell.focus(); // Set focus to the selected  cell
+    
+    // create an observer instance
+    var observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+            if(selectedCell.innerHTML != '') {
+                if(!isValidMove(board, selRow, selCol, Number(selectedCell.innerHTML))) {
+                    alert("Invalid move!");
+                    selectedCell.innerHTML = "";
+                } else {
+                    observer.disconnect();
+                    selectedCell.setAttribute("contenteditable", false);
+
+                    board[selRow][selCol] = Number(selectCell.innerHTML);
+                }
+            }
+        });
+    });
+
+    // configuration of the observer:
+    var config = { attributes: true, childList: true, characterData: true }
+
+    // pass in the target node, as well as the observer options
+    observer.observe(selectedCell, config);
 }
 
 
 // Function to generate a Sudoku board
 function generateSudoku() {
-    let board = [];
     for (let i = 0; i < 9; i++) {
         board[i] = [];
         for (let j = 0; j < 9; j++) {
@@ -150,7 +181,14 @@ function printBoard(board, userEntered) {
             cell.classList.add("cell");
             cell.id = `cell-${i}-${j}`; // Add id to each cell
             cell.textContent = board[i][j] === 0 ? "" : board[i][j];
+
+            if(userEntered[i][j])
+            {
+                cell.setAttribute("contenteditable", false);
+            }
+            
             cell.style.backgroundColor = userEntered[i][j] ? "#fff" : "rgb(220, 228, 181)";
+
             gameBoard.appendChild(cell);
         }
     }
