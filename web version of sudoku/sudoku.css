@@ -1,0 +1,74 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    gap: 2px;
+    border: 2px solid #000; /* Black border around the entire board. */
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.cell {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    background-color: #eee;
+}
+
+.cell:nth-child(3n) {
+    border-right: 2px solid #000; /* Right border for every third cell */
+}
+
+.cell:nth-child(9n) {
+    border-right: none; /* Remove right border for the last cell in each row */
+}
+
+.cell:nth-child(n+73) {
+    border-bottom: 2px solid #000; /* Bottom border for cells in the last row */
+}
+
+.cell.selected-cell {
+    background-color: #c7e0ff; /* Light blue background for the selected cell */
+}
+
+.difficulty-selection {
+    margin-top: 20px;
+    text-align: center;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
