@@ -4,21 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sudoku Game</title>
-    <link rel="stylesheet" href="sudoku.css">
+    <link rel="stylesheet" href="button-dificulty.css">
+    <link rel="stylesheet" href="buttons.css">
+    <link rel="stylesheet" href="main.css">
+    <script src="https://kit.fontawesome.com/8d092f11e9.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="container">
         <h1>Sudoku Game</h1>
-        <div class="game-board" id="game-board"></div>
         <div class="difficulty-selection">
-            <label for="difficulty">Select Difficulty:</label>
-            <select id="difficulty">
-                <option value="easy">Easy</option>
-                <option value="medium">Medium</option>
-                <option value="hard">Hard</option>
-            </select>
-            <button id="start-button">Start Game</button>
+            <h4>Select Difficulty</h4>
+            <div  id="difficulty" class="radio-inputs">
+                <label class="radio active">
+                    <input type="radio" name="radio" value="easy" checked="true">
+                    <span class="name">Easy</span>
+                </label>
+                <label class="radio">
+                    <input type="radio" name="radio" value="medium">
+                    <span class="name">Medium</span>
+                </label>
+
+                <label class="radio">
+                    <input type="radio" name="radio" value="hard">
+                    <span class="name">Hard</span>
+                </label>
+            </div>
         </div>
+<div class="board-container">
+    <div class="game-board" id="game-board"></div>
+    <div class = "slot-wrapper-buttons">
+        <button class = "boton cuatro">    
+         <i class="fa-regular fa-lightbulb"></i>
+        </button>
+        <h5 class = "buttons-text">hint</h5>
+   
+        <button class = "boton cuatro">
+         <i class="fa-solid fa-eraser"></i>
+        </button>
+        <h5 class = "buttons-text">erase</h5>
+   
+        <button class = "boton cuatro">
+         <i class="fa-solid fa-rotate-left"></i>
+        </button>
+        <h5 class = "buttons-text">undo</h5>
+</div>
+</div>
+        
+
+        <button id="start-button" class="button-new-game">New Game</button>
     </div>
     <script src="sudoku.js"></script>
 </body>

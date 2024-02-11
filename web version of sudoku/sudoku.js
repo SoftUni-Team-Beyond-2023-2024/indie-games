@@ -91,7 +91,10 @@ function shuffle(array) {
 
 // Function to start the game when the Start Game button is clicked
 function startGame() {
-    let difficulty = document.getElementById("difficulty").value;
+   // let difficulty = document.getElementById("difficulty").value;
+
+    let difficulty = document.querySelector('input[type=radio]:checked').value;
+ 
     let board = initializeSudoku(difficulty);
     playSudoku(board);
 }
@@ -108,6 +111,10 @@ function initializeSudoku(difficulty) {
             break;
         case "hard":
             removeNumbers(board, 61);
+            break;
+
+        default:
+            removeNumbers(board, 24);
             break;
     }
     return board;
@@ -186,7 +193,7 @@ function printBoard(board, userEntered) {
             {
                 cell.setAttribute("contenteditable", false);
             }
-            
+           
             cell.style.backgroundColor = userEntered[i][j] ? "#fff" : "rgb(220, 228, 181)";
 
             gameBoard.appendChild(cell);
@@ -330,3 +337,30 @@ function solveSudoku(board) {
 
 // Add event listener to the Start Game button
 document.getElementById("start-button").addEventListener("click", startGame);
+
+// Loads the game on window load
+window.addEventListener("DOMContentLoaded", () => {
+   startGame();
+});
+
+//Adds click functionality and active status styling to buttons
+document.querySelectorAll('input[name="radio"]').forEach(radioButton =>{
+    radioButton.addEventListener("click", () => {
+        startGame();
+        toggleActiveClass(radioButton)
+    } )
+});
+
+// Toggles active/selected state of button for styling purposes
+function toggleActiveClass(selectedButton) {
+    document.querySelectorAll('input[name="radio"]').forEach(radioButton => {
+        if (radioButton.parentElement.classList.contains('active')) {
+            radioButton.parentElement.classList.remove('active')
+        }
+
+        if (!selectedButton.parentElement.classList.contains('active')) {
+            selectedButton.parentElement.classList.add('active')
+        }
+    })
+};
+
