@@ -186,6 +186,10 @@ function printBoard(board, userEntered) {
         for (let j = 0; j < 9; j++) {
             let cell = document.createElement("div");
             cell.classList.add("cell");
+            if(j == 2 || j== 5) {
+                cell.classList.add("row");
+                console.log(cell)
+            }
             cell.id = `cell-${i}-${j}`; // Add id to each cell
             cell.textContent = board[i][j] === 0 ? "" : board[i][j];
 

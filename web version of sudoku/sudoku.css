@@ -37,7 +37,10 @@ h1 {
     font-size: 1.5rem;
     background-color: #eee;
 }
-
+.row {
+    border-bottom: 2px solid black;
+    background-color: pink;
+}
 .cell:nth-child(3n) {
     border-right: 2px solid #000; /* Right border for every third cell */
 }
@@ -45,7 +48,9 @@ h1 {
 .cell:nth-child(9n) {
     border-right: none; /* Remove right border for the last cell in each row */
 }
-
+.cell:nth-child(19n) {
+    border-bottom: 2px solid #000; /* Right border for every third cell */
+}
 .cell:nth-child(n+73) {
     border-bottom: 2px solid #000; /* Bottom border for cells in the last row */
 }

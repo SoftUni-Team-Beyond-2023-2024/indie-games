@@ -132,3 +132,9 @@ h1 {
     flex-direction: row;
     width: 100%;
 }
+.top-bar {
+    display: flex;
+    justify-content: space-around;
+    
+    margin: 10px;
+}
