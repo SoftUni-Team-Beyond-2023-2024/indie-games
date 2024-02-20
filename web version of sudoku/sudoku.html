@@ -10,8 +10,27 @@
     <script src="https://kit.fontawesome.com/8d092f11e9.js" crossorigin="anonymous"></script>
 </head>
 <body>
+    <div class="top-bar neumorphism">
+        <div class="content-left">
+            <img src="logo" alt="logo"></img>
+            <button class="button-nav-bar neumorphism">Обучения Курсове</button>
+            <button class="button-nav-bar neumorphism">Marketplace</button>
+        </div>
+
+        <div className="content-right">
+            <button class="button-nav-bar neumorphism">Игри</button>
+            <button class="button-nav-bar neumorphism">Здраве</button>
+            <a href="/login"><button class="button-nav-bar neumorphism">Вход</button></a>
+        </div>
+    </div>/
+    <br/>
+    <div class="main-body">
+        <RouterProvider router={router} />
+    </div>
+</div>
     <div class="container">
         <h1>Sudoku Game</h1>
+        
         <div class="difficulty-selection">
             <h4>Select Difficulty</h4>
             <div  id="difficulty" class="radio-inputs">
@@ -39,9 +58,9 @@
         <h5 class = "buttons-text">hint</h5>
    
         <button class = "boton cuatro">
-         <i class="fa-solid fa-eraser"></i>
+         <i  class="fa-solid fa-door-closed"></i>
         </button>
-        <h5 class = "buttons-text">erase</h5>
+        <h5 class = "buttons-text">loby</h5>
    
         <button class = "boton cuatro">
          <i class="fa-solid fa-rotate-left"></i>
