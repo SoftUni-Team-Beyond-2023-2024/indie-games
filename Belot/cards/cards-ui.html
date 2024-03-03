@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MainPage</title>
+     <style>
+        body {
+            background-color: #2c3e50;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            color: #ecf0f1;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-rows: 15fr 20fr 20fr 20fr 20fr 90px;
+            grid-template-columns: repeat(5, 1fr);
+            height: 100vh;
+            gap: 10px;
+            padding: 10px;
+        }
+        .card-stack {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+        .card-control {
+            width: 80px;
+            height: 120px;
+            margin: 5px;
+            border: 2px solid #bdc3c7;
+            border-radius: 5px;
+            background-color: #34495e;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .button-pass {
+            width: 100px;
+            height: 40px;
+            background-color: #3498db;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            color: #ecf0f1;
+            margin-top: 10px;
+        }
+        .button-pass:hover {
+            background-color: #2980b9;
+        }
+        .text-block {
+            font-size: 18px;
+            font-weight: bold;
+            color: #ecf0f1;
+        }
+        .total-result {
+            font-size: 22px;
+            font-weight: bold;
+            color: #ecf0f1;
+            text-align: right;
+        }
+        .open-cards-checkbox {
+            margin-left: 20px;
+            cursor: pointer;
+        }
+        .open-cards-checkbox-label {
+            font-size: 16px;
+            color: #ecf0f1;
+            margin-left: 5px;
+        }
+        .card-played {
+            width: 80px;
+            height: 120px;
+            margin-top: 10px;
+            border: 2px solid #bdc3c7;
+            border-radius: 5px;
+            background-color: #34495e;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-container">
+        <div class="card-stack" id="NorthCardsPanel"></div>
+        <div class="card-stack" id="SouthCardsPanel"></div>
+        <div class="card-stack" id="EastCardsPanel"></div>
+        <div class="card-stack" id="WestCardPanel"></div>
+        <div class="button-container" id="bidsPanel">
+            <button class="button-pass" id="buttonPass" onclick="bidTapped()">Pass</button>
+        </div>
+        <div class="announce-container" id="AnnouncesPanel"></div>
+        <div class="text-block" id="ProgramVersion">Belot v1.0</div>
+        <div class="total-result" id="TotalResult">0-0</div>
+        <input type="checkbox" class="open-cards-checkbox" id="openCardsCheckBox" onclick="openCardsCheckBoxTapped()">
+        <div class="card-played" id="southCardPlayed"></div>
+        <div class="card-played" id="eastCardPlayed"></div>
+        <div class="card-played" id="northCardPlayed"></div>
+        <div class="card-played" id="westCardPlayed"></div>
+    </div>
+    <script src="./cards.js"></script>
+    <script src="./deck.js"></script> 
+    <script src="../players/players.js"></script>
+    <script src="../players/game.js"></script>
+</body>
+</html>
